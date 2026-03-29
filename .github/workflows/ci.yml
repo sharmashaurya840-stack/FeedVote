@@ -51,6 +51,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install --upgrade packaging
           pip install -r requirements.txt
 
       # Run tests with coverage
@@ -192,6 +193,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install docker-compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       # Build backend Docker image
       - name: Build backend Docker image
