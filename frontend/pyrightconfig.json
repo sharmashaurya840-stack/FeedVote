@@ -1,0 +1,23 @@
+{
+  "typeCheckingMode": "standard",
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Windows",
+  "venvPath": ".",
+  "pythonPath": "${workspaceFolder}",
+  "extraPaths": [
+    "${workspaceFolder}"
+  ],
+  "reportMissingImports": false,
+  "reportMissingModuleSource": false,
+  "reportMissingTypeStubs": false,
+  "reportUnusedImport": true,
+  "reportUnusedVariable": true,
+  "reportGeneralTypeIssues": true,
+  "reportUntypedFunctionDecorator": false,
+  "reportUntypedClassDecorator": false,
+  "reportUntypedBaseClass": false,
+  "reportUntypedNamedTuple": false,
+  "reportPrivateUsage": false,
+  "reportConstantRedefinition": true,
+  "reportInvariantUnref": true
+}

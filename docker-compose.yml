@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: feedvote-backend
+    environment:
+      DATABASE_URL: "sqlite:///./feedvote.db"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    networks:
+      - feedvote-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build: ./frontend
+    container_name: feedvote-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_URL: "http://backend:8000"
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend:/app
+    networks:
+      - feedvote-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  feedvote-network:
+    driver: bridge
+
