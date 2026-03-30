@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, EmailStr, field_validator, ConfigDict
 from typing import Optional, List
 from datetime import datetime
+from enum import Enum
 
 
 class UserBase(BaseModel):
@@ -56,11 +57,16 @@ class Feedback(FeedbackBase):
     model_config = ConfigDict(from_attributes=True)
 
 
+class VoteType(str, Enum):
+    upvote = "upvote"
+    downvote = "downvote"
+
+
 class VoteBase(BaseModel):
     """Base vote schema"""
     feedback_id: int = Field(..., gt=0)
     user_id: int = Field(..., gt=0)
-    vote_type: str = Field(..., description="Vote type: 'upvote' or 'downvote'")
+    vote_type: VoteType
 
 
 class VoteCreate(VoteBase):
