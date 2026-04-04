@@ -4,7 +4,6 @@ Checks if the configured database is accessible and has required tables.
 Works with both file-based and in-memory databases.
 """
 import os
-import sqlite3
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.exc import SQLAlchemyError
 
