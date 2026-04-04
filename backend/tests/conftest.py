@@ -17,7 +17,8 @@ from app.database import Base, get_db
 
 
 # Test database configuration
-TEST_DATABASE_URL = "sqlite:///./test.db"
+# Using in-memory SQLite for fast, isolated tests without file system dependency
+TEST_DATABASE_URL = "sqlite:///:memory:"
 
 # Create test engine
 engine = create_engine(

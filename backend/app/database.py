@@ -2,10 +2,11 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# Database URL from environment variable, default to SQLite for development
+# Database URL from environment variable, default to SQLite in-memory for development
+# Production/persistent storage should be configured via DATABASE_URL env var
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "sqlite:///./feedvote.db"
+    "sqlite:///:memory:"
 )
 
 # Create engine
