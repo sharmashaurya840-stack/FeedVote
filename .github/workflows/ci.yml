@@ -20,7 +20,7 @@ on:
       - '.editorconfig'             # Editor settings
 
 env:
-  REGISTRY: ghcr.io
+  REGISTRY: docker.io
   BACKEND_IMAGE: feedvote-backend
   FRONTEND_IMAGE: feedvote-frontend
 
@@ -352,6 +352,19 @@ jobs:
       - name: Log in to Docker Hub
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # Verify Docker login was successful
+      - name: Verify Docker login
+        run: |
+          echo "Testing Docker login credentials..."
+          docker pull alpine:latest > /dev/null 2>&1
+          if [ $? -eq 0 ]; then
+            echo "✓ Docker login successful - credentials valid"
+          else
+            echo "❌ Docker login failed - invalid credentials"
+            echo "Please verify that DOCKER_USERNAME and DOCKER_PASSWORD secrets are correctly configured"
+            exit 1
+          fi
 
       # Build and push backend image
       - name: Build and push backend Docker image
