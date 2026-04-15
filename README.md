@@ -86,9 +86,15 @@ The project follows a feature branch workflow. Developers create a feature branc
 
 ## Screenshots
 
-![Pipeline Success](path/to/pipeline.png)
+![Pipeline Success](c:\Users\srbro\Dropbox\PC\Pictures\Screenshots\Screenshot 2026-04-15 222819.png)
 
-![Deployment Output](path/to/deployment.png)
+![Deployment Output](c:\Users\srbro\Dropbox\PC\Pictures\Screenshots\Screenshot 2026-04-15 233519.png)
+
+### 🔹 Application Running
+![App Screenshot]()
+
+### 🔹 Deploy to Docker hub Job Success
+![CI/CD Screenshot](c:\Users\srbro\Dropbox\PC\Pictures\Screenshots\Screenshot 2026-04-15 233519.png)
 
 ## Challenges Faced
 
