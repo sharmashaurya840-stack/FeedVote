@@ -9,7 +9,8 @@ on:
       - '**.md'                    # All markdown files (README.md, etc.)
       - '.gitignore'               # Git configuration
       - 'LICENSE'                  # License file
-      - '.editorconfig'             # Editor settings
+      - '.editorconfig'            # Editor settings
+      - 'images'                   # Image assets (if any)  
   pull_request:
     branches: [ main ]
     # Skip pipeline if ONLY these files changed
@@ -18,6 +19,7 @@ on:
       - '.gitignore'               # Git configuration
       - 'LICENSE'                  # License file
       - '.editorconfig'             # Editor settings
+      - 'images'                   # Image assets (if any)
 
 env:
   REGISTRY: docker.io
